@@ -109,9 +109,9 @@ This document contains the solution for ICSE 2019 class 12 maths Q.15(a)
 \solution
 We know that
 \begin{align}
-\norm{\vec{a}+\vec{b}}^2 = \norm{\vec{a}}^2 + \norm{\vec{b}}^2 + 2 \vec{a}.\vec{b}
+\norm{\vec{a}+\vec{b}}^2 = \norm{\vec{a}}^2 + \norm{\vec{b}}^2 + 2 \vec{a}^{\top}\vec{b}
 \end{align}
-Given, $\vec{a}$ and $\vec{b}$ are perpendicular, hence $\vec{a}.\vec{b}=0$, therefore substituting in (1),
+Given, $\vec{a}$ and $\vec{b}$ are perpendicular, hence $\vec{a}^{\top}\vec{b}=0$, therefore substituting in (1),
 \begin{align}
 \norm{\vec{a}+\vec{b}}^2 = \norm{\vec{a}}^2 + \norm{\vec{b}}^2
 \end{align}
@@ -134,3 +134,4 @@ The output of the python code used for verification of the answer:\\
 In the figure, blue arrow with its tail at origin represents $\vec{a}$, which can also be displaced to have its tail at the coordinate (12,0) to complete the triangle.\\
 The red arrow represents $\vec{a}+\vec{b}$ (by Triangle Law of Vector Addition) and green arrow represents $\vec{b}$. Vectors $\vec{a}$ and $\vec{b}$ are perpendicular, $\norm{\vec{a}} = 5$ and $\norm{\vec{a}+\vec{b}} = 13$, hence by the diagram, $\norm{\vec{b}}$ should be 12 since by Baudhāyana Sulbasūtra, 5, 12, and 13 form a triplet which is quite famous ($5^2+12^2=13^2$).
 \end{document}
+
