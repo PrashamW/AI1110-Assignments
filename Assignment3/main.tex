@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{AI1110 Assignment 3} 
+\author{Prasham Walvekar\\CS21BTECH11047}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+% Lists frame
+\section{Problem Statement}
+\begin{frame}{Problem Statement}
+
+\begin{block}{CBSE class 10 Probability Exercise 15.1 Q.19:}
+A child has a die whose six faces show the letters A, B, C, D, E, A. The die is thrown once. What is the probability of getting\\
+\begin{enumerate}
+    \item A?
+    \item D?
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+
+% Blocks frame
+\section{Solution}
+\begin{frame}{Solution}
+Let $X \in \{0, 1, 2, 3, 4\}$ be a random variable such that X is the letter that appears when the die is rolled.\\
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+Random Variable (X) & Outcome \\ \hline
+X=0                 & A       \\ \hline
+X=1                 & B       \\ \hline
+X=2                 & C       \\ \hline
+X=3                 & D       \\ \hline
+X=4                 & E       \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{enumerate}
+    \item $Pr(X=0) = \frac{\text{No. of favourable outcomes}}{\text{Total number of outcomes}} = \frac{2}{6} = \frac{1}{3}$\\
+    
+    
+    \item $Pr(X=3) = \frac{\text{No. of favourable outcomes}}{\text{Total number of outcomes}} = \frac{1}{6}$
+\end{enumerate}
+    
+\end{frame} 
+
+\end{document}
