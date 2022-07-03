@@ -1,0 +1,79 @@
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Madrid}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{calc}                     
+%\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+
+\begin{document}
+% Title page details: 
+\title{Assignment 7} 
+\author{Prasham Walvekar\\ CS21BTECH11047}
+\date{\today}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+\section{Question}
+\begin{frame}{Question}
+\begin{block}{Question - 15.5}
+Consider a population in which the number of offsprings for any individual is at most two. Show that if the probability of occurrence of two offsprings/individuals is less than the probability of occurrence of zero offspring/individual, then the entire population is bound to extinct with probability one.
+\end{block}
+\end{frame}
+
+%Blocks frame
+\section{Solution}
+\begin{frame}{Solution - I}
+    Let us assume that the various offspring of different individuals are independent, identically distributed, random variables with common distribution given by (over all generations) 
+\begin{align}
+    p_k = \pr{y = k} = \pr{\text{an individual has k offspring}} \geq 0
+    \end{align}
+    and common moment generating function
+    \begin{align}
+        \pr{z} = E\cbrak{z^y} = \sum_{k=0}^\infty p_k z^k
+    \end{align}
+Since, $k \leq 2$, we can write 
+\begin{align}
+    \pr{z} &= p_0 + p_1 z + p_2 z^2
+    \end{align}
+    where 
+ \begin{align}   
+    p_0 + p_1 + p_2 &= 1
+\end{align}
+\end{frame}       
+
+\begin{frame}{Solution II}
+   Notice that
+   \begin{align}
+       \pr{z} - z &= p_0 - (1-p_1)z + p_2 z^2\\
+    &= p_0 - (p_0 + p_2)z + p_2 z^2\\
+    &= (z-1)(p_2 z - p_0)
+   \end{align}
+    and hence, the two roots of the equation $\pr{z} = z$ are given by 
+    \begin{align}
+        z_1 &= 1 \\
+        z_2 &= \frac{p_0}{p_2}
+    \end{align}
+    Thus, According to the question, if $p_2 < p_0$, then $z_2 > 1$ and hence the smallest positive root of $\pr{z} = z$ is 1 which represents the probability of extinction. It implies that a tribe that does not produce offspring in abundance is bound to extinct.
+ \end{frame}
+\end{document}
