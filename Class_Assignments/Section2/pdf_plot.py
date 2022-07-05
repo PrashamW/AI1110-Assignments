@@ -5,8 +5,8 @@ import scipy
 import matplotlib.pyplot as plt
 
 #if using termux
-import subprocess
-import shlex
+# import subprocess
+# import shlex
 #end if
 
 
@@ -53,4 +53,3 @@ plt.legend(["Numerical","Theory"])
 # subprocess.run(shlex.split("termux-open ../figs/gauss_pdf.pdf"))
 #else
 plt.show() #opening the plot window
-

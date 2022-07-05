@@ -35,4 +35,4 @@ plt.ylabel('$F_X(x)$')
 #plt.savefig('../figs/gauss_cdf.eps')
 #subprocess.run(shlex.split("termux-open ../figs/gauss_cdf.pdf"))
 #else
-plt.show() #opening the plot windows
+plt.show() #opening the plot window

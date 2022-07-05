@@ -1,6 +1,8 @@
 #Importing numpy, scipy, mpmath and pyplot
 import numpy as np
 import matplotlib.pyplot as plt
+import mpmath as mp
+import scipy
 
 #if using termux
 import subprocess
@@ -12,16 +14,22 @@ import shlex
 x = np.linspace(-4,4,30)#points on the x axis
 simlen = int(1e6) #number of samples
 err = [] #declaring probability list
+cdf = []
 #randvar = np.random.normal(0,1,simlen)
 #randvar = np.loadtxt('uni.dat',dtype='double')
 randvar = np.loadtxt('gau.dat',dtype='double')
+
 for i in range(0,30):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
 	err_n = np.size(err_ind) #computing the probability
 	err.append(err_n/simlen) #storing the probability values in a list
 
+def gauss_cdf(x):
+	return 0.5 * (1 + mp.erf(x/mp.sqrt(2)))
 	
-plt.plot(x.T,err)#plotting the CDF
+vec_gauss_cdf = scipy.vectorize(gauss_cdf)
+plt.plot(x.T,err,"o")#plotting the CDF
+plt.plot(x,vec_gauss_cdf(x))
 plt.grid() #creating the grid
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
@@ -35,4 +43,4 @@ plt.ylabel('$F_X(x)$')
 #plt.savefig('../figs/gauss_cdf.eps')
 #subprocess.run(shlex.split("termux-open ../figs/gauss_cdf.pdf"))
 #else
-plt.show() #opening the plot windows
+plt.show() #opening the plot window
