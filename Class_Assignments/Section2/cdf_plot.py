@@ -9,8 +9,6 @@ import subprocess
 import shlex
 #end if
 
-
-
 x = np.linspace(-4,4,30)#points on the x axis
 simlen = int(1e6) #number of samples
 err = [] #declaring probability list
@@ -24,8 +22,11 @@ for i in range(0,30):
 	err_n = np.size(err_ind) #computing the probability
 	err.append(err_n/simlen) #storing the probability values in a list
 
+def Q(x):
+	return 1 - 0.5 * (1 + mp.erf(x/mp.sqrt(2)))
+
 def gauss_cdf(x):
-	return 0.5 * (1 + mp.erf(x/mp.sqrt(2)))
+	return 1 - Q(x)
 	
 vec_gauss_cdf = scipy.vectorize(gauss_cdf)
 plt.plot(x.T,err,"o")#plotting the CDF
