@@ -273,12 +273,10 @@ void triangular(char *str, int len)
     // Generate numbers
     for (i = 0; i < len; i++)
     {
-        double temp = 0;
-        for (int j = 0; j < 2; j++)
-        {
-            temp = temp + (double)rand() / RAND_MAX;
-        }
-        fprintf(fp, "%lf\n", temp);
+        double U1 = (double)rand() / RAND_MAX;
+        double U2 = (double)rand() / RAND_MAX;
+        double U = U1 + U2;
+        fprintf(fp, "%lf\n", U);
     }
     fclose(fp);
 }

@@ -21,7 +21,6 @@ for i in range(0,30):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
 	err_n = np.size(err_ind) #computing the probability
 	err.append(err_n/simlen) #storing the probability values in a list
-
 def uniform_cdf(x):
     if x>=0 and x<=1 : return x
     elif x<=0 : return 0
