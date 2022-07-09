@@ -1,4 +1,4 @@
-\documentclass[journal,12pt,twocolumn]
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
 \usepackage{setspace}
 \usepackage{gensymb}
 \usepackage{caption}
@@ -558,19 +558,88 @@ wget https://github.com/PrashamW/AI1110-Assignments/blob/main/Class_Assignments/
 \end{lstlisting}
 \item Find the CDF of T.\\
 \solution
-\begin{lstlisting}
-wget https://github.com/PrashamW/AI1110-Assignments/blob/main/Class_Assignments/Section4/cdf_plot.py
-\end{lstlisting}
-The CDF of $T$ is plotted in Fig. \ref{fig:cdf_plot(fig4.2)}\\
+The CDF of $T$ is plotted in Fig. \ref{fig:cdf_func_plot(fig4.2)}\\
 \begin{figure}
 \centering
-\includegraphics[width=\columnwidth]{cdf_plot(fig4.2)}
-\caption{The CDF of $X$}
-\label{fig:cdf_plot(fig4.2)}
+\includegraphics[width=\columnwidth]{cdf_func_plot(fig4.2)}
+\caption{The CDF of $T$}
+\label{fig:cdf_func_plot(fig4.2)}
 \end{figure}
-\item Find the PDF of $T$.
-\item Find the theoretical expressions for the PDF and CDF of $T$.
-\item Verify your results through a plot. 
+\item Find the PDF of $T$.\\
+\solution
+The PDF of $T$ is plotted in Fig. \ref{fig:pdf_func_plot(fig4.3)}\\
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{pdf_func_plot(fig4.3)}
+\caption{The PDF of $T$}
+\label{fig:pdf_func_plot(fig4.3)}
+\end{figure}
+
+\item Find the theoretical expressions for the PDF and CDF of $T$.\\
+\solution
+The CDF of $T$ is given by
+	\begin{align}
+		F_T(t) = \pr{T \le t} = \pr{U_1 + U_2 \le t}	
+	\end{align}		
+	Since $U_1, U_2 \in [0,1] \implies U_1 + U_2 \in [0,2]$
+	Therefore, if $t \ge 2$, then $U_1 + U_2 \le t$ is always true and if $t < 0$, then $U_1 + U_2 \le t$ is always false.
+	
+	Now, fix the value of $U_1$ to be some $x$
+	\begin{align}
+		x + U_2 \le t \implies U_2 \le t - x
+	\end{align}
+	
+	If $0 \le t \le 1$, then $x$ can take all values in $[0,t]$
+	\begin{align}
+		F_T(t)	&= \int_0^t \pr{U_2 \le t - x} p_{U_1}(x) \, dx \\
+		&= \int_0^t F_{U_2}(t-x) p_{U_1}(x) \, dx
+	\end{align}
+	\begin{align}
+		0 \le x \le t &\implies 0 \le t - x \le t \le 1 \\
+		&\implies F_{U_2}(t-x) = t - x
+	\end{align}
+	\begin{align}
+		F_T(t) &= \int_0^t (t-x) \cdot 1 \cdot \, dx \\
+		&= \left. tx - \frac{x^2}{2} \right|_0^t \\
+		&= \frac{t^2}{2}
+	\end{align}
+	
+	If $1 < t < 2$, $x$ can only take values in $[0,1]$ as $U_1 \le 1$
+	\begin{align}
+		F_T(t)	&= \int_0^1 F_{U_2}(t-x) \cdot 1 \cdot \, dx 
+	\end{align}
+	\begin{align}
+		0 \le x \le t - 1 &\implies 1 \le t - x \le t \\
+		t - 1 \le x \le 1 &\implies 0 < t - 1 \le t - x \le 1
+	\end{align}
+	\begin{align}
+		F_T(t) &= \int_0^{t-1} 1 \, dx + \int_{t-1}^1 (t-x)\, dx \\
+		&= t - 1 + t(1 - (t - 1)) - \frac{1}{2} + \frac{(t-1)^2}{2} \\
+		&= t - 1 + 2t - t^2 -\frac{1}{2} + \frac{t^2}{2} + \frac{1}{2} - t \\ 
+		&= -\frac{t^2}{2} + 2t - 1
+	\end{align}
+	
+
+\item Verify your results through a plot.\\
+\solution
+The following codes have been used to plot the CDF and PDF
+\begin{lstlisting}
+wget https://github.com/PrashamW/AI1110-Assignments/blob/main/Class_Assignments/Section4/cdf_plot.py
+wget https://github.com/PrashamW/AI1110-Assignments/blob/main/Class_Assignments/Section4/pdf_plot.py
+\end{lstlisting}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{cdf_plot(fig4.5)}
+\caption{The CDF of $T$}
+\label{fig:cdf_plot(fig4.5)}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{pdf_plot(fig4.5)}
+\caption{The PDF of $T$}
+\label{fig:pdf_plot(fig4.5)}
+\end{figure}
+
 \end{enumerate}
 \section{Maximum Likelihood}
 \begin{enumerate}[label=\thesection.\arabic*
