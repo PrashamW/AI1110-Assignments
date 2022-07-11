@@ -329,3 +329,54 @@ void gen_Y(char *str, int len, double a)
     fclose(fp1);
     fclose(fp2);
 }
+
+void ber_prob(int len, double a)
+{
+    int i;
+    FILE *fp;
+    FILE *fp1;
+    FILE *fp2;
+    double y, x, n;
+    fp1 = fopen("../Section2/gau.dat", "r");
+    fp2 = fopen("ber.dat", "r");
+
+    // Generate numbers
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    int count4 = 0;
+    for (i = 0; i < len; i++)
+    {
+        fscanf(fp1, "%lf", &n);
+        fscanf(fp2, "%lf", &x);
+        y = a * x + n;
+        {
+            if (x == 1 && y < 0)
+            {
+                count1++;
+            }
+            else if (x == -1 && y > 0)
+            {
+                count3++;
+            }
+        }
+        {
+            if (x == 1)
+            {
+                count2++;
+            }
+            else
+            {
+                count4++;
+            }
+        }
+    }
+    double prob_e_0 = (double)count1 / count2;
+    double prob_e_1 = (double)count3 / count4;
+
+    printf("%lf\n", prob_e_0);
+    printf("%lf\n", prob_e_1);
+
+    fclose(fp1);
+    fclose(fp2);
+}
